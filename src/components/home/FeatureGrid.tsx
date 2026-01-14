@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Stethoscope, Brain, Film, ArrowRight, ExternalLink } from "lucide-react";
+import { Stethoscope, Brain, Film, ArrowRight, ExternalLink, Cpu, Sparkles, Clapperboard } from "lucide-react";
 
 const faculties = [
   {
@@ -8,6 +8,7 @@ const faculties = [
     tagline: "From Stethoscope to Algorithm",
     description: "AI for Healthcare Innovators",
     icon: Stethoscope,
+    thumbnailIcon: Cpu,
     href: "/health",
     color: "blue",
     mediumUrl: "https://medium.com/@GreyBrain",
@@ -16,7 +17,6 @@ const faculties = [
       excerpt: "Understanding how autonomous AI agents are reshaping clinical workflows and patient care.",
       date: "Jan 13, 2025",
       url: "https://medium.com/@GreyBrain/a-clinicians-guide-to-agentic-ai-in-healthcare-564cd29d84a7",
-      thumbnail: "https://miro.medium.com/v2/resize:fit:1400/0*health-ai-thumbnail.jpg",
     },
   },
   {
@@ -25,6 +25,7 @@ const faculties = [
     tagline: "The Science of Purpose",
     description: "Neuroscience meets Vedic Wisdom",
     icon: Brain,
+    thumbnailIcon: Sparkles,
     href: "/soul",
     color: "gold",
     mediumUrl: "https://medium.com/@Sage_AI",
@@ -33,7 +34,6 @@ const faculties = [
       excerpt: "Ancient wisdom from the Katha Upanishad decoded for the modern distracted mind.",
       date: "Dec 15, 2024",
       url: "https://medium.com/@Sage_AI/the-horses-of-distraction-how-a-3-000-year-old-teaching-explains-your-instagram-addiction-b0b5f84dd9a8",
-      thumbnail: "https://miro.medium.com/v2/resize:fit:1400/0*soul-wisdom-thumbnail.jpg",
     },
   },
   {
@@ -42,6 +42,7 @@ const faculties = [
     tagline: "Decoding Culture",
     description: "Academic Analysis of Cinema",
     icon: Film,
+    thumbnailIcon: Clapperboard,
     href: "/lens",
     color: "blue",
     mediumUrl: "https://medium.com/@GreyBrainer",
@@ -50,7 +51,6 @@ const faculties = [
       excerpt: "A deep psychoanalytic breakdown of the latest Tamil cinema masterpiece.",
       date: "Jan 12, 2025",
       url: "https://medium.com/@GreyBrainer/greybrainer-analysis-angammal-2025-a61fae9e6916",
-      thumbnail: "https://miro.medium.com/v2/resize:fit:1400/0*lens-cinema-thumbnail.jpg",
     },
   },
 ];
@@ -69,6 +69,7 @@ export function FeatureGrid() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {faculties.map((faculty) => {
             const Icon = faculty.icon;
+            const ThumbnailIcon = faculty.thumbnailIcon;
             const isGold = faculty.color === "gold";
             
             return (
@@ -99,24 +100,49 @@ export function FeatureGrid() {
                   </div>
                 </Link>
 
-                {/* Latest Post */}
+                {/* Latest Post with Visual Thumbnail */}
                 <a
                   href={faculty.latestPost.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block px-5 pb-4 group"
                 >
-                  {/* Thumbnail placeholder - gradient background */}
+                  {/* Thumbnail with gradient and icon */}
                   <div 
-                    className={`w-full h-28 rounded-lg mb-3 flex items-center justify-center ${
+                    className={`relative w-full h-32 rounded-lg mb-3 overflow-hidden ${
                       isGold 
-                        ? "bg-gradient-to-br from-brand-gold/5 to-brand-gold/15" 
-                        : "bg-gradient-to-br from-brand-blue/5 to-brand-blue/15"
+                        ? "bg-gradient-to-br from-brand-gold/10 via-brand-gold/20 to-brand-gold/30" 
+                        : "bg-gradient-to-br from-brand-blue/10 via-brand-blue/20 to-brand-blue/30"
                     }`}
                   >
-                    <span className={`text-xs font-medium ${isGold ? "text-brand-gold/40" : "text-brand-blue/40"}`}>
-                      Latest Article
-                    </span>
+                    {/* Decorative pattern */}
+                    <div className="absolute inset-0 opacity-30">
+                      <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <defs>
+                          <pattern id={`grid-${faculty.id}`} width="10" height="10" patternUnits="userSpaceOnUse">
+                            <circle cx="1" cy="1" r="0.5" fill={isGold ? "#D4A84B" : "#0066FF"} opacity="0.3" />
+                          </pattern>
+                        </defs>
+                        <rect width="100" height="100" fill={`url(#grid-${faculty.id})`} />
+                      </svg>
+                    </div>
+                    
+                    {/* Center icon */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className={`p-4 rounded-full ${isGold ? "bg-brand-gold/20" : "bg-brand-blue/20"}`}>
+                        <ThumbnailIcon 
+                          size={32} 
+                          className={isGold ? "text-brand-gold/60" : "text-brand-blue/60"} 
+                        />
+                      </div>
+                    </div>
+                    
+                    {/* "Latest" badge */}
+                    <div className={`absolute top-2 left-2 px-2 py-0.5 rounded text-[10px] font-medium ${
+                      isGold ? "bg-brand-gold/20 text-brand-gold" : "bg-brand-blue/20 text-brand-blue"
+                    }`}>
+                      Latest
+                    </div>
                   </div>
                   
                   <p className="text-sm font-medium text-brand-charcoal leading-snug mb-1.5 line-clamp-2 group-hover:text-brand-blue transition-colors">

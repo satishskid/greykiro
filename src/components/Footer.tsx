@@ -1,13 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { Twitter, Linkedin, Youtube, Mail, ArrowRight, CheckCircle } from "lucide-react";
+import { Instagram, Linkedin, Facebook, Send, MessageCircle } from "lucide-react";
 
 const socialLinks = [
-  { platform: "Twitter", url: "https://twitter.com/greybrain", icon: Twitter, handle: "@greybrain" },
-  { platform: "LinkedIn", url: "https://linkedin.com/company/greybrain", icon: Linkedin, handle: "GreyBrain" },
-  { platform: "YouTube", url: "https://youtube.com/@greybrain", icon: Youtube, handle: "@greybrain" },
+  { platform: "Instagram", url: "https://www.instagram.com/greybrain.ai/", icon: Instagram, handle: "@greybrain.ai" },
+  { platform: "LinkedIn", url: "https://www.linkedin.com/company/greybrain/", icon: Linkedin, handle: "GreyBrain" },
+  { platform: "Facebook", url: "https://www.facebook.com/61578061765400/", icon: Facebook, handle: "GreyBrain" },
+  { platform: "Telegram", url: "https://t.me/greybrainsoai", icon: Send, handle: "@greybrainsoai" },
 ];
 
 const quickLinks = [
@@ -23,61 +23,53 @@ const mediumLinks = [
   { label: "Cinema Analysis", href: "https://medium.com/@GreyBrainer" },
 ];
 
+const courseLinks = [
+  { label: "GenAI Express", href: "https://learn.greybrain.ai/course/gen-ai-doctors-express" },
+  { label: "12-Week Program", href: "https://learn.greybrain.ai/course/gen-ai-healthcare" },
+  { label: "All Courses", href: "https://learn.greybrain.ai" },
+];
+
 export function Footer() {
-  const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email && email.includes("@")) {
-      setSubscribed(true);
-      setEmail("");
-    }
-  };
-
   return (
     <footer className="bg-brand-charcoal text-white">
-      {/* Newsletter Section */}
+      {/* Community Join Section */}
       <div className="border-b border-white/10">
         <div className="container-custom py-10">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
-              <h3 className="text-lg font-bold mb-1">Join The GreyBrain Lab</h3>
+              <h3 className="text-lg font-bold mb-1">Join The GreyBrain Community</h3>
               <p className="text-gray-400 text-sm font-sans">
-                One experiment. One prompt. One insight. Weekly.
+                Connect with 500+ healthcare professionals exploring AI.
               </p>
             </div>
 
-            {subscribed ? (
-              <div className="flex items-center gap-2 text-green-400">
-                <CheckCircle size={18} />
-                <span className="text-sm">You&apos;re in! Check your inbox.</span>
-              </div>
-            ) : (
-              <form onSubmit={handleSubscribe} className="flex gap-2 w-full md:w-auto">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 md:w-64 px-4 py-2.5 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-gray-400 text-sm focus:outline-none focus:border-brand-blue"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="px-4 py-2.5 bg-brand-blue text-white rounded-lg hover:bg-brand-blue/90 transition-colors flex items-center gap-1.5 text-sm font-medium"
-                >
-                  Subscribe <ArrowRight size={14} />
-                </button>
-              </form>
-            )}
+            <div className="flex gap-3">
+              <a
+                href="https://chat.whatsapp.com/D8pR8tE6aYeLiE6PnU7gqL"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2.5 bg-[#25D366] text-white rounded-lg hover:bg-[#25D366]/90 transition-colors text-sm font-medium"
+              >
+                <MessageCircle size={16} />
+                WhatsApp
+              </a>
+              <a
+                href="https://t.me/greybrainsoai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2.5 bg-[#0088cc] text-white rounded-lg hover:bg-[#0088cc]/90 transition-colors text-sm font-medium"
+              >
+                <Send size={16} />
+                Telegram
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Main Footer */}
       <div className="container-custom py-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="font-heading text-lg font-bold">
@@ -85,6 +77,9 @@ export function Footer() {
             </Link>
             <p className="mt-3 text-gray-400 text-sm font-sans leading-relaxed">
               Where Grey Matter Meets AI
+            </p>
+            <p className="mt-2 text-gray-500 text-xs font-sans">
+              Bengaluru, India
             </p>
           </div>
 
@@ -100,6 +95,25 @@ export function Footer() {
                   >
                     {link.label}
                   </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Courses */}
+          <div>
+            <h4 className="font-medium text-sm mb-4">AI School</h4>
+            <ul className="space-y-2">
+              {courseLinks.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-white text-sm transition-colors"
+                  >
+                    {link.label}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -151,7 +165,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="mt-10 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-gray-500 text-xs">
-            © 2025 GreyBrain.ai. All rights reserved.
+            © 2025 GreyBrain.ai. All rights reserved. · IIHMR Bangalore Partner
           </p>
           <div className="flex items-center gap-4">
             {socialLinks.map((link) => {

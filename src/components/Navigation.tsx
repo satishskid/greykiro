@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X, Twitter, Linkedin, Youtube, Mail } from "lucide-react";
+import { Menu, X, Instagram, Linkedin, Facebook, Send } from "lucide-react";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -14,9 +14,9 @@ const navItems = [
 ];
 
 const socialLinks = [
-  { icon: Twitter, href: "https://twitter.com/greybrain", label: "Twitter" },
-  { icon: Linkedin, href: "https://linkedin.com/company/greybrain", label: "LinkedIn" },
-  { icon: Youtube, href: "https://youtube.com/@greybrain", label: "YouTube" },
+  { icon: Instagram, href: "https://www.instagram.com/greybrain.ai/", label: "Instagram" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/greybrain/", label: "LinkedIn" },
+  { icon: Facebook, href: "https://www.facebook.com/61578061765400/", label: "Facebook" },
 ];
 
 export function Navigation() {
@@ -54,7 +54,7 @@ export function Navigation() {
             })}
           </ul>
 
-          {/* Right Side: Social + Subscribe */}
+          {/* Right Side: Social + Join Community */}
           <div className="hidden md:flex items-center gap-3">
             {/* Social Icons */}
             <div className="flex items-center gap-1 mr-2">
@@ -75,14 +75,16 @@ export function Navigation() {
               })}
             </div>
 
-            {/* Subscribe Button */}
-            <Link
-              href="/lab"
+            {/* Join Community Button - Telegram */}
+            <a
+              href="https://t.me/greybrainsoai"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-white bg-brand-blue rounded-full hover:bg-brand-blue/90 transition-colors"
             >
-              <Mail size={14} />
-              Subscribe
-            </Link>
+              <Send size={14} />
+              Join Community
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -120,14 +122,16 @@ export function Navigation() {
                 );
               })}
               <li>
-                <Link
-                  href="/lab"
+                <a
+                  href="https://t.me/greybrainsoai"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 mt-2 px-4 py-2 text-sm font-medium text-white bg-brand-blue rounded-full"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <Mail size={14} />
-                  Subscribe
-                </Link>
+                  <Send size={14} />
+                  Join Community
+                </a>
               </li>
             </ul>
 

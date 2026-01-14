@@ -9,6 +9,7 @@ interface ButtonProps {
   disabled?: boolean;
   className?: string;
   type?: "button" | "submit";
+  target?: "_blank" | "_self";
 }
 
 const variantStyles = {
@@ -32,11 +33,21 @@ export function Button({
   disabled = false,
   className = "",
   type = "button",
+  target,
 }: ButtonProps) {
   const baseStyles = "inline-flex items-center justify-center font-medium rounded-lg transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2";
   const styles = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${disabled ? "opacity-50 cursor-not-allowed" : ""} ${className}`;
 
   if (href && !disabled) {
+    // External link
+    if (target === "_blank") {
+      return (
+        <a href={href} target="_blank" rel="noopener noreferrer" className={styles}>
+          {children}
+        </a>
+      );
+    }
+    // Internal link
     return (
       <Link href={href} className={styles}>
         {children}

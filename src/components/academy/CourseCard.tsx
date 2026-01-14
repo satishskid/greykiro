@@ -17,6 +17,7 @@ interface Course {
   status: "open" | "featured" | "coming-soon";
   rating?: number;
   curriculum?: CurriculumModule[];
+  enrollUrl?: string;
 }
 
 interface CourseCardProps {
@@ -109,13 +110,24 @@ export function CourseCard({ course }: CourseCardProps) {
         )}
 
         {/* CTA Button */}
-        <Button
-          variant={course.status === "coming-soon" ? "secondary" : "primary"}
-          className="w-full mt-auto"
-          onClick={() => setShowModal(true)}
-        >
-          {course.status === "coming-soon" ? "Get Notified" : "Register Interest"}
-        </Button>
+        {course.enrollUrl && course.status === "open" ? (
+          <a
+            href={course.enrollUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full mt-auto inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium text-white bg-brand-blue rounded-lg hover:bg-brand-blue/90 transition-colors"
+          >
+            Enroll Now →
+          </a>
+        ) : (
+          <Button
+            variant={course.status === "coming-soon" ? "secondary" : "primary"}
+            className="w-full mt-auto"
+            onClick={() => setShowModal(true)}
+          >
+            {course.status === "coming-soon" ? "Get Notified" : "Register Interest"}
+          </Button>
+        )}
       </Card>
 
       {/* Registration Modal */}

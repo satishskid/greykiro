@@ -108,22 +108,60 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+    <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-gradient-to-br from-gray-50 via-white to-brand-blue/5">
       {/* Animated Neural Network Canvas */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"
-        style={{ opacity: 0.6 }}
+        style={{ opacity: 0.7 }}
       />
 
-      {/* Brain Silhouette Overlay */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <svg
-          viewBox="0 0 200 200"
-          className="w-[500px] h-[500px] opacity-[0.03]"
-          fill="currentColor"
-        >
-          <path d="M100 20c-35 0-60 25-65 55-3 20 5 40 20 52-5 8-8 18-5 28 5 15 18 25 35 25h30c17 0 30-10 35-25 3-10 0-20-5-28 15-12 23-32 20-52-5-30-30-55-65-55zm-20 140c-10 0-18-8-18-18s8-18 18-18 18 8 18 18-8 18-18 18zm40 0c-10 0-18-8-18-18s8-18 18-18 18 8 18 18-8 18-18 18z" />
+      {/* Brain/Neural Network Visual - Right Side */}
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none opacity-20 hidden lg:block">
+        <svg viewBox="0 0 400 400" className="w-full h-full" fill="none">
+          {/* Brain outline with neural connections */}
+          <defs>
+            <linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#0066FF" stopOpacity="0.8" />
+              <stop offset="50%" stopColor="#D4A84B" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="#0066FF" stopOpacity="0.4" />
+            </linearGradient>
+          </defs>
+          
+          {/* Stylized brain shape */}
+          <path
+            d="M200 50 C280 50 340 100 350 170 C360 240 320 300 280 330 C240 360 160 360 120 330 C80 300 40 240 50 170 C60 100 120 50 200 50"
+            stroke="url(#brainGradient)"
+            strokeWidth="2"
+            fill="none"
+          />
+          
+          {/* Neural network nodes */}
+          <circle cx="200" cy="120" r="8" fill="#0066FF" opacity="0.6" />
+          <circle cx="150" cy="160" r="6" fill="#0066FF" opacity="0.5" />
+          <circle cx="250" cy="160" r="6" fill="#0066FF" opacity="0.5" />
+          <circle cx="120" cy="220" r="5" fill="#D4A84B" opacity="0.6" />
+          <circle cx="280" cy="220" r="5" fill="#D4A84B" opacity="0.6" />
+          <circle cx="170" cy="260" r="7" fill="#0066FF" opacity="0.5" />
+          <circle cx="230" cy="260" r="7" fill="#0066FF" opacity="0.5" />
+          <circle cx="200" cy="200" r="10" fill="#D4A84B" opacity="0.7" />
+          
+          {/* Connections */}
+          <line x1="200" y1="120" x2="150" y2="160" stroke="#0066FF" strokeWidth="1" opacity="0.3" />
+          <line x1="200" y1="120" x2="250" y2="160" stroke="#0066FF" strokeWidth="1" opacity="0.3" />
+          <line x1="150" y1="160" x2="120" y2="220" stroke="#0066FF" strokeWidth="1" opacity="0.3" />
+          <line x1="250" y1="160" x2="280" y2="220" stroke="#0066FF" strokeWidth="1" opacity="0.3" />
+          <line x1="150" y1="160" x2="200" y2="200" stroke="#D4A84B" strokeWidth="1" opacity="0.4" />
+          <line x1="250" y1="160" x2="200" y2="200" stroke="#D4A84B" strokeWidth="1" opacity="0.4" />
+          <line x1="200" y1="200" x2="170" y2="260" stroke="#0066FF" strokeWidth="1" opacity="0.3" />
+          <line x1="200" y1="200" x2="230" y2="260" stroke="#0066FF" strokeWidth="1" opacity="0.3" />
+          <line x1="120" y1="220" x2="170" y2="260" stroke="#D4A84B" strokeWidth="1" opacity="0.3" />
+          <line x1="280" y1="220" x2="230" y2="260" stroke="#D4A84B" strokeWidth="1" opacity="0.3" />
+          
+          {/* Transformer attention arcs */}
+          <path d="M150 160 Q200 140 250 160" stroke="#D4A84B" strokeWidth="1" fill="none" opacity="0.4" strokeDasharray="4 2" />
+          <path d="M120 220 Q200 180 280 220" stroke="#0066FF" strokeWidth="1" fill="none" opacity="0.3" strokeDasharray="4 2" />
+          <path d="M170 260 Q200 240 230 260" stroke="#D4A84B" strokeWidth="1" fill="none" opacity="0.4" strokeDasharray="4 2" />
         </svg>
       </div>
 
@@ -147,14 +185,19 @@ export function Hero() {
             <Button href="/academy" variant="primary" size="lg">
               Explore The Academy
             </Button>
-            <Button href="/lab" variant="secondary" size="lg">
-              Enter The Lab
+            <Button 
+              href="https://t.me/greybrainsoai" 
+              variant="secondary" 
+              size="lg"
+              target="_blank"
+            >
+              Join Community
             </Button>
           </div>
 
           {/* Trust Indicator */}
           <p className="mt-10 text-sm text-gray-400 font-sans">
-            Trusted by 500+ Doctors · Read on Medium · Top Voice in AI
+            Trusted by 500+ Doctors · IIHMR Bangalore Partner · Top Voice in AI
           </p>
         </div>
       </div>

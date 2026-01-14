@@ -11,7 +11,8 @@ const announcements = {
       title: "Generative AI For Doctors - Express",
       duration: "2 Weeks",
       status: "Enrolling Now",
-      highlight: "Next batch starts Jan 20",
+      highlight: "Next batch starts soon",
+      enrollUrl: "https://learn.greybrain.ai/course/gen-ai-doctors-express",
     },
   ],
   upcoming: [
@@ -19,8 +20,9 @@ const announcements = {
       id: "genai-comprehensive",
       title: "Generative AI for Healthcare Professionals",
       duration: "12 Weeks",
-      status: "Coming Feb 2025",
+      status: "Coming Soon",
       highlight: "Comprehensive program",
+      enrollUrl: "https://learn.greybrain.ai/course/gen-ai-healthcare",
     },
     {
       id: "physcipreneur",
@@ -28,6 +30,7 @@ const announcements = {
       duration: "12 Weeks",
       status: "Coming Q1 2025",
       highlight: "Entrepreneurship for doctors",
+      enrollUrl: "https://learn.greybrain.ai",
     },
   ],
 };
@@ -38,6 +41,8 @@ export function CourseAnnouncements() {
   const handleNotify = (courseId: string) => {
     if (!notified.includes(courseId)) {
       setNotified([...notified, courseId]);
+      // In production, this would send to a backend or open WhatsApp/Telegram
+      window.open("https://t.me/greybrainsoai", "_blank");
     }
   };
 
@@ -54,12 +59,14 @@ export function CourseAnnouncements() {
               Courses designed for healthcare professionals
             </p>
           </div>
-          <Link
-            href="/academy"
+          <a
+            href="https://learn.greybrain.ai"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-sm font-medium text-brand-blue hover:text-brand-blue/80 flex items-center gap-1 transition-colors"
           >
             View All Courses <ArrowRight size={14} />
-          </Link>
+          </a>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -70,9 +77,11 @@ export function CourseAnnouncements() {
               Enrolling Now
             </h3>
             {announcements.running.map((course) => (
-              <Link
+              <a
                 key={course.id}
-                href="/academy"
+                href={course.enrollUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block p-4 rounded-lg border border-green-100 bg-green-50/50 hover:bg-green-50 hover:border-green-200 transition-all group"
               >
                 <div className="flex items-start justify-between gap-3">
@@ -89,11 +98,11 @@ export function CourseAnnouncements() {
                       </span>
                     </div>
                   </div>
-                  <span className="flex-shrink-0 px-2.5 py-1 text-xs font-medium text-white bg-green-600 rounded-full">
-                    Enroll
+                  <span className="flex-shrink-0 px-2.5 py-1 text-xs font-medium text-white bg-green-600 rounded-full group-hover:bg-green-700 transition-colors">
+                    Enroll →
                   </span>
                 </div>
-              </Link>
+              </a>
             ))}
           </div>
 
@@ -128,7 +137,7 @@ export function CourseAnnouncements() {
                     className={`flex-shrink-0 px-2.5 py-1 text-xs font-medium rounded-full flex items-center gap-1 transition-all ${
                       notified.includes(course.id)
                         ? "text-green-600 bg-green-50 cursor-default"
-                        : "text-brand-blue bg-brand-blue/10 hover:bg-brand-blue/20"
+                        : "text-brand-blue bg-brand-blue/10 hover:bg-brand-blue/20 cursor-pointer"
                     }`}
                   >
                     {notified.includes(course.id) ? (
