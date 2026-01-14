@@ -30,16 +30,16 @@ const facultyCards = [
 
 export function FeatureGrid() {
   return (
-    <section className="section-spacing bg-white">
+    <section className="py-16 bg-gray-50">
       <div className="container-custom">
-        <h2 className="text-3xl md:text-4xl font-bold text-brand-charcoal text-center mb-4">
+        <h2 className="text-2xl md:text-3xl font-bold text-brand-charcoal text-center mb-3">
           The Three Faculties
         </h2>
-        <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto font-sans">
+        <p className="text-gray-500 text-center mb-10 max-w-xl mx-auto font-sans text-sm">
           Explore our integrated approach to human potential through technology, wisdom, and culture.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {facultyCards.map((card) => {
             const Icon = card.icon;
             return (
@@ -48,21 +48,21 @@ export function FeatureGrid() {
                 href={card.href}
                 hoverable
                 accentColor={card.accentColor}
-                className="text-center"
+                className="text-center py-8"
               >
                 <div
-                  className={`inline-flex items-center justify-center w-16 h-16 rounded-full mb-6 ${
+                  className={`inline-flex items-center justify-center w-14 h-14 rounded-full mb-5 ${
                     card.accentColor === "blue"
                       ? "bg-brand-blue/10 text-brand-blue"
                       : "bg-brand-gold/10 text-brand-gold"
                   }`}
                 >
-                  <Icon size={32} />
+                  <Icon size={28} />
                 </div>
-                <h3 className="text-xl font-bold text-brand-charcoal mb-3">
+                <h3 className="text-lg font-bold text-brand-charcoal mb-2">
                   {card.title}
                 </h3>
-                <p className="text-gray-600 font-sans">
+                <p className="text-gray-500 font-sans text-sm">
                   {card.description}
                 </p>
               </Card>

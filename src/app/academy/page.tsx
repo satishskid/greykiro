@@ -2,132 +2,121 @@ import { CourseCard, Testimonials } from "@/components/academy";
 import type { Course } from "@/components/academy";
 
 const courses: Course[] = [
+  // Registrations Open
   {
-    id: "no-code-ai-doctor",
-    title: "The No-Code AI Doctor",
-    duration: "6 Weeks",
-    description: "Build medical AI tools without writing code",
-    price: 499,
-    currency: "$",
-    featured: true,
+    id: "genai-express",
+    title: "Generative AI For Doctors - Express",
+    duration: "2 Weeks",
+    description: "Empowering doctors, clinicians, and healthcare innovators to harness the potential of GenAI responsibly, effectively, and ethically.",
+    status: "open",
+    rating: 5.0,
     curriculum: [
       {
-        title: "Week 1: AI Fundamentals for Healthcare",
+        title: "Week 1: GenAI Fundamentals",
         lessons: [
-          "Understanding LLMs and their medical applications",
-          "Prompt engineering basics",
-          "Healthcare data considerations",
+          "Understanding LLMs in healthcare",
+          "Prompt engineering for clinical use",
+          "Ethical considerations",
         ],
       },
       {
-        title: "Week 2: No-Code Platforms Overview",
+        title: "Week 2: Practical Applications",
         lessons: [
-          "Introduction to Bubble, Zapier, and Make",
-          "Connecting to AI APIs",
-          "Building your first workflow",
+          "Clinical documentation with AI",
+          "Patient communication tools",
+          "Building your first AI workflow",
+        ],
+      },
+    ],
+  },
+  // Featured Programs
+  {
+    id: "genai-comprehensive",
+    title: "Generative AI for Doctors/Healthcare Professionals",
+    duration: "12 Weeks",
+    description: "Comprehensive 12-week program covering all aspects of AI integration in healthcare practice.",
+    status: "featured",
+    curriculum: [
+      {
+        title: "Module 1-3: Foundations",
+        lessons: [
+          "AI/ML fundamentals for clinicians",
+          "Healthcare data & privacy",
+          "Clinical AI landscape",
         ],
       },
       {
-        title: "Week 3-4: Building Clinical Tools",
+        title: "Module 4-8: Applications",
         lessons: [
-          "Symptom checker development",
-          "Clinical documentation assistant",
-          "Patient education generator",
+          "Diagnostic AI tools",
+          "Documentation & workflow",
+          "Patient engagement",
         ],
       },
       {
-        title: "Week 5-6: Deployment & Compliance",
+        title: "Module 9-12: Advanced",
         lessons: [
-          "HIPAA considerations",
-          "Testing and validation",
-          "Launching your tool",
+          "Building custom solutions",
+          "Implementation strategies",
+          "Future of clinical AI",
         ],
       },
     ],
   },
   {
-    id: "scientific-search-peace",
-    title: "The Scientific Search for Peace",
-    duration: "4 Weeks",
-    description: "Align Dopamine with Dharma",
-    price: 299,
-    currency: "$",
+    id: "physcipreneur",
+    title: "PhyScipreneur: The Doctor's MBA",
+    duration: "12 Weeks",
+    description: "Entrepreneurship course for doctors focusing on idea validation, feasibility, business strategy and growth planning in healthcare.",
+    status: "featured",
     curriculum: [
       {
-        title: "Week 1: The Neuroscience of Stress",
+        title: "Phase 1: Ideation",
         lessons: [
-          "Understanding the stress response",
-          "Cortisol and chronic stress",
-          "Brain plasticity and recovery",
+          "Problem identification",
+          "Market research",
+          "Idea validation",
         ],
       },
       {
-        title: "Week 2: Vedic Wisdom Decoded",
+        title: "Phase 2: Business",
         lessons: [
-          "The science behind meditation",
-          "Dharma and purpose",
-          "Ancient practices, modern evidence",
+          "Business model design",
+          "Financial planning",
+          "Legal & regulatory",
         ],
       },
       {
-        title: "Week 3: The Dopamine-Dharma Protocol",
-        lessons: [
-          "Rewiring reward circuits",
-          "Building sustainable motivation",
-          "Daily practice design",
-        ],
-      },
-      {
-        title: "Week 4: Integration & Maintenance",
-        lessons: [
-          "Creating your personal protocol",
-          "Measuring progress",
-          "Long-term sustainability",
-        ],
-      },
-    ],
-  },
-  {
-    id: "docpreneur-blueprint",
-    title: "Docpreneur Blueprint",
-    duration: "Bootcamp",
-    description: "From Idea to MVP",
-    price: 799,
-    currency: "$",
-    curriculum: [
-      {
-        title: "Module 1: Ideation & Validation",
-        lessons: [
-          "Finding problems worth solving",
-          "Market research for healthcare",
-          "Validating your idea",
-        ],
-      },
-      {
-        title: "Module 2: Product Development",
-        lessons: [
-          "MVP design principles",
-          "No-code development",
-          "User testing basics",
-        ],
-      },
-      {
-        title: "Module 3: Business Fundamentals",
-        lessons: [
-          "Healthcare business models",
-          "Regulatory considerations",
-          "Funding options",
-        ],
-      },
-      {
-        title: "Module 4: Launch & Scale",
+        title: "Phase 3: Growth",
         lessons: [
           "Go-to-market strategy",
-          "Building your first users",
-          "Scaling considerations",
+          "Scaling operations",
+          "Funding & investment",
         ],
       },
     ],
+  },
+  {
+    id: "spiritual-health",
+    title: "Spiritual Health: Science Behind Holistic Wellness",
+    duration: "TBA",
+    description: "Explore the science behind spirituality and its contribution to holistic health using VedVision tools.",
+    status: "featured",
+  },
+  // Coming Soon
+  {
+    id: "workshop-medicos",
+    title: "Workshop: GenAI for Medicos - Institutional",
+    duration: "4 Hours",
+    description: "Exclusive workshop designed to upskill medical students and faculty with cutting-edge GenAI applications in healthcare and medical education.",
+    status: "coming-soon",
+  },
+  {
+    id: "workshop-doctors",
+    title: "Workshop: GenAI for Doctors",
+    duration: "4 Hours",
+    description: "Collaborative GenAI workshop designed for large groups of doctors and healthcare professionals showing how to use AI in real clinical workflows.",
+    status: "coming-soon",
   },
 ];
 
@@ -136,49 +125,77 @@ const testimonials = [
     id: "1",
     name: "Dr. Priya Sharma",
     role: "Cardiologist, Mumbai",
-    content:
-      "The No-Code AI Doctor course transformed how I approach patient education. I built a custom tool in just 3 weeks!",
+    content: "The Express course transformed how I approach patient documentation. I now save 2 hours daily using AI tools I learned here.",
   },
   {
     id: "2",
     name: "Dr. Rahul Mehta",
     role: "General Practitioner, Delhi",
-    content:
-      "The Scientific Search for Peace helped me recover from burnout. The neuroscience-backed approach made all the difference.",
+    content: "PhyScipreneur gave me the framework to launch my telemedicine startup. The business strategy modules were invaluable.",
   },
   {
     id: "3",
     name: "Dr. Ananya Reddy",
-    role: "Psychiatrist & Founder",
-    content:
-      "Docpreneur Blueprint gave me the framework to launch my mental health startup. Now serving 1000+ patients monthly.",
+    role: "Psychiatrist, Bangalore",
+    content: "Finally, an AI course designed by doctors, for doctors. The clinical context made all the difference in my learning.",
   },
 ];
 
 export default function AcademyPage() {
+  const openCourses = courses.filter((c) => c.status === "open");
+  const featuredCourses = courses.filter((c) => c.status === "featured");
+  const comingSoonCourses = courses.filter((c) => c.status === "coming-soon");
+
   return (
     <>
       {/* Page Header */}
-      <section className="bg-gradient-to-br from-brand-blue/5 via-white to-brand-gold/5 py-16">
-        <div className="container-custom text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-brand-charcoal mb-4">
-            The Academy
+      <section className="bg-gradient-to-br from-brand-blue/5 via-white to-brand-gold/5 py-12">
+        <div className="container-custom">
+          <h1 className="text-3xl md:text-4xl font-bold text-brand-charcoal mb-3">
+            AI School
           </h1>
-          <p className="text-lg text-gray-600 font-sans max-w-2xl mx-auto">
-            Transform from Consumer to Innovator. Practical courses designed for
-            healthcare professionals ready to lead.
+          <p className="text-gray-600 font-sans max-w-xl">
+            Master AI in Healthcare — Comprehensive courses designed for healthcare professionals.
           </p>
         </div>
       </section>
 
-      {/* Course Cards */}
-      <section className="container-custom section-spacing">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {courses.map((course) => (
+      {/* Registrations Open */}
+      {openCourses.length > 0 && (
+        <section className="container-custom py-10">
+          <h2 className="text-xl font-bold text-brand-charcoal mb-6 flex items-center gap-2">
+            <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+            Registrations Open
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {openCourses.map((course) => (
+              <CourseCard key={course.id} course={course} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Featured Programs */}
+      <section className="container-custom py-10 border-t border-gray-100">
+        <h2 className="text-xl font-bold text-brand-charcoal mb-6">Featured Programs</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {featuredCourses.map((course) => (
             <CourseCard key={course.id} course={course} />
           ))}
         </div>
       </section>
+
+      {/* Coming Soon */}
+      {comingSoonCourses.length > 0 && (
+        <section className="container-custom py-10 border-t border-gray-100">
+          <h2 className="text-xl font-bold text-brand-charcoal mb-6 text-gray-400">Coming Soon</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {comingSoonCourses.map((course) => (
+              <CourseCard key={course.id} course={course} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Testimonials */}
       <Testimonials testimonials={testimonials} />

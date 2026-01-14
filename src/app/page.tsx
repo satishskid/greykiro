@@ -1,10 +1,10 @@
-import { Hero, FeatureGrid, SocialProof } from "@/components/home";
+import { Hero, FeatureGrid, LatestInsights } from "@/components/home";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <SocialProof />
+      <LatestInsights />
       <FeatureGrid />
     </>
   );
