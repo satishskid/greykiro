@@ -1,11 +1,11 @@
-import { Hero, FeatureGrid, CourseAnnouncements } from "@/components/home";
+import { Hero, FeatureGrid, TelegramFeed } from "@/components/home";
 
 export default function Home() {
   return (
     <>
       <Hero />
+      <TelegramFeed />
       <FeatureGrid />
-      <CourseAnnouncements />
     </>
   );
 }
