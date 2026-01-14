@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import * as fc from "fast-check";
-import { facultyCards } from "./FeatureGrid";
+import { faculties } from "./FeatureGrid";
 
 /**
  * Feature: greybrain-website, Property 3: Faculty Card Navigation
@@ -19,10 +19,10 @@ describe("FeatureGrid Component - Property Tests", () => {
   it("Property 3: All faculty cards have valid href routes", () => {
     fc.assert(
       fc.property(
-        fc.constantFrom(...facultyCards),
-        (card) => {
-          // Each card href should be one of the valid faculty routes
-          expect(validFacultyRoutes).toContain(card.href);
+        fc.constantFrom(...faculties),
+        (faculty) => {
+          // Each faculty href should be one of the valid faculty routes
+          expect(validFacultyRoutes).toContain(faculty.href);
         }
       ),
       { numRuns: 100 }
@@ -33,7 +33,7 @@ describe("FeatureGrid Component - Property Tests", () => {
    * Property 3 (continued): Faculty card hrefs are unique
    */
   it("Property 3: All faculty card hrefs are unique", () => {
-    const hrefs = facultyCards.map((card) => card.href);
+    const hrefs = faculties.map((faculty) => faculty.href);
     const uniqueHrefs = new Set(hrefs);
     expect(uniqueHrefs.size).toBe(hrefs.length);
   });
@@ -44,14 +44,14 @@ describe("FeatureGrid Component - Property Tests", () => {
   it("Property 3: All faculty cards have required properties", () => {
     fc.assert(
       fc.property(
-        fc.constantFrom(...facultyCards),
-        (card) => {
-          // Each card should have id, title, description, href, and accentColor
-          expect(card.id).toBeTruthy();
-          expect(card.title).toBeTruthy();
-          expect(card.description).toBeTruthy();
-          expect(card.href).toBeTruthy();
-          expect(["blue", "gold"]).toContain(card.accentColor);
+        fc.constantFrom(...faculties),
+        (faculty) => {
+          // Each faculty should have id, title, description, href, and color
+          expect(faculty.id).toBeTruthy();
+          expect(faculty.title).toBeTruthy();
+          expect(faculty.description).toBeTruthy();
+          expect(faculty.href).toBeTruthy();
+          expect(["blue", "gold"]).toContain(faculty.color);
         }
       ),
       { numRuns: 100 }
@@ -64,9 +64,9 @@ describe("FeatureGrid Component - Property Tests", () => {
   it("Property 3: All faculty card titles start with 'GreyBrain'", () => {
     fc.assert(
       fc.property(
-        fc.constantFrom(...facultyCards),
-        (card) => {
-          expect(card.title.startsWith("GreyBrain")).toBe(true);
+        fc.constantFrom(...faculties),
+        (faculty) => {
+          expect(faculty.title.startsWith("GreyBrain")).toBe(true);
         }
       ),
       { numRuns: 100 }
